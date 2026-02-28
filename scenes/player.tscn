@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://buk2rj6urktx1"]
+
+[ext_resource type="Texture2D" uid="uid://cdd1omanscwrq" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap-characters.png" id="1_g2els"]
+[ext_resource type="Texture2D" uid="uid://ciubl58hrqc6i" path="res://assets/kenney_pixel-platformer/Tilemap/tilemap-characters-reverse.png" id="2_qhqgy"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dqkch"]
+atlas = ExtResource("1_g2els")
+region = Rect2(1, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlg0r"]
+atlas = ExtResource("1_g2els")
+region = Rect2(26, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tuyoq"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(176, 0, 22, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fjrip"]
+atlas = ExtResource("2_qhqgy")
+region = Rect2(201, 0, 22, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_smehm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dqkch")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlg0r")
+}],
+"loop": true,
+"name": &"walk-left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tuyoq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fjrip")
+}],
+"loop": true,
+"name": &"walk-right",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ur7pv"]
+radius = 9.0
+height = 22.0
+
+[node name="Player" type="CharacterBody2D" unique_id=668268885]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=854185811]
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_smehm")
+animation = &"walk-right"
+frame_progress = 0.033723228
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=449837777]
+position = Vector2(0, -12)
+shape = SubResource("CapsuleShape2D_ur7pv")
